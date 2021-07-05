@@ -1,0 +1,21 @@
+.TransactionsTable {
+    width: 100%;
+    &_Details {
+        overflow: hidden;
+        display: flex;
+    }
+
+    &_Row {
+        &:hover {
+            cursor: pointer;
+        }
+        
+        td {
+            border-bottom-width: 0;
+        }
+    }
+
+    &_DetailsRow {
+        height: 0 !important;   
+    }
+}

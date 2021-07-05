@@ -1,0 +1,19 @@
+<div *ngIf="type == 'card' && account">
+    <mat-card>
+        <h2 (click)="goToDetails(account, type)">{{ account.data.display_name }}</h2>
+        <h4>*{{ account.data.partial_card_number }} {{ account.data.name_on_card }}</h4>
+        <h5>{{  account.data.card_type }} | {{ account.data.card_network }} | {{ account.data.currency }}</h5>
+
+        <p *ngIf="account.data.update_timestamp">Last updated: {{ account.data.update_timestamp | date: 'mediumDate'}}</p>
+    </mat-card>
+</div>
+
+<div *ngIf="type == 'account' && account">
+    <mat-card>
+        <h2 (click)="goToDetails(account, type)">{{ account.data.display_name }}</h2>
+        <h4>{{ account.data.account_number?.number }} {{ account.data.account_number?.sort_code }} {{ account.data.account_number?.swift_bic }}</h4>
+        <h5>{{ account.data.account_type}} | {{ account.data.currency }}</h5>
+
+        <p *ngIf="account.data.update_timestamp">Last updated: {{ account.data.update_timestamp | date: 'mediumDate'}}</p>
+    </mat-card>
+</div>

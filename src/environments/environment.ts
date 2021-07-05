@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  client_id: 'sandbox-consequencekim2021-1e80ec',
+  client_secret: '446bed0e-ec33-4140-952e-34d3d66a914e',
+  auth_api: 'auth.truelayer-sandbox.com',
+  api: 'api.truelayer-sandbox.com',
+  redirect_uri: `http://localhost:4200/auth`,
+  domain: 'http://localhost:4200',
+  data_api: '/api/truelayer/accounts/'
 };
 
 /*

@@ -1,0 +1,39 @@
+<div *ngIf="card$ | async as card">
+    <app-card [account]="card" [type]="card.account_type?.toLowerCase()"></app-card>
+</div>
+
+<section>
+    <mat-tab-group>
+        <mat-tab label="Transactions">
+            <h1>Transactions</h1>
+            <app-transactions-list *ngIf="transactions.length; else showNoTransactions" [transactions]="transactions"></app-transactions-list>
+            <ng-template #showNoTransactions>
+                <p>No transactions found.</p>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Visualise">
+            <h1>Charts</h1>
+            <mat-card>
+                <mat-card-title>Transactions by merchant</mat-card-title>
+                <mat-card-content>
+                    <app-pie-chart [results]="chartDataMerchant"></app-pie-chart>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+                <mat-card-title>Transactions by classification</mat-card-title>
+                <mat-card-content>
+                    <app-pie-chart [results]="chartDataMainClass"></app-pie-chart>
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card>
+                <mat-card-title>Transactions by Subclassification</mat-card-title>
+                <mat-card-content>
+                    <app-pie-chart [results]="chartDataSubClass"></app-pie-chart>
+                </mat-card-content>
+            </mat-card>
+            
+        </mat-tab>
+      </mat-tab-group>
+</section>

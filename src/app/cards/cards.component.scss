@@ -1,0 +1,10 @@
+.Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    &_Card {
+        flex: 1 1 33%;
+        margin: 1rem;
+    }
+}

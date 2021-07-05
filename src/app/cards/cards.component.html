@@ -1,0 +1,5 @@
+<div *ngIf="cards$ | async as cardResults">
+    <div *ngIf="cardResults.length" class="Container">
+        <app-card class="Container_Card" *ngFor="let card of cardResults" [account]="card" [type]="card.account_type?.toLowerCase()"></app-card>
+    </div>
+</div>
