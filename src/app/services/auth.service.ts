@@ -24,30 +24,6 @@ export class AuthService {
     return this.token ? true : false;
   }
 
-  async exchangeCode(code: string) {
-    if (code) {
-      const requestBody: ExchangeRequestBody = {
-        grant_type: EXCHANGE_GRANT,
-        client_id: environment.client_id,
-        client_secret: environment.client_secret,
-        redirect_uri: environment.redirect_uri,
-        code: code
-      }
-
-      const result = await this.http.post(EXCHANGE_CODE, requestBody, {
-        headers: {
-          'Accept': '*/*',
-          'Access-Control-Allow-Origin': 'http://localhost:4200'
-        }
-      }).toPromise()
-
-      if(result) {
-        console.log(result);
-      }
-    }
-    
-  }
-
   saveAuthResponse(authResponseData: AuthResponse): void {
     const token: string = authResponseData?.access_token;
     const refreshToken: string = authResponseData.refresh_token;

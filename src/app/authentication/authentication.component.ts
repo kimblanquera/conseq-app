@@ -21,9 +21,6 @@ export class AuthenticationComponent implements OnInit {
     this.activatedRoute.queryParamMap.pipe(takeUntil(this.destroy$)).subscribe((params: ParamMap) => {
       if(params.has("code")) {
         const code: string | undefined = params.get("code")?.toString();
-        if(code) {
-          this.authService.exchangeCode(code);
-        }
       }
     })
   }
