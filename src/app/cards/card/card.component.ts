@@ -15,6 +15,8 @@ export class CardComponent implements OnInit {
 
   @Input() type: string | undefined = '';
   @Input() account: IAccountData | undefined;
+  @Input() totalTransactions: number | null = null;
+  @Input() totalAmount: number | null = null;
 
   constructor(private router: Router) { }
 

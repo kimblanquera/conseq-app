@@ -1,19 +1,25 @@
 <div *ngIf="type == 'card' && account">
-    <mat-card>
-        <h2 (click)="goToDetails(account, type)">{{ account.data.display_name }}</h2>
-        <h4>*{{ account.data.partial_card_number }} {{ account.data.name_on_card }}</h4>
-        <h5>{{  account.data.card_type }} | {{ account.data.card_network }} | {{ account.data.currency }}</h5>
-
-        <p *ngIf="account.data.update_timestamp">Last updated: {{ account.data.update_timestamp | date: 'mediumDate'}}</p>
+    <mat-card class="Conseq_Block">
+        <div class="Subhead" (click)="goToDetails(account, type)">XXXX - {{ account.data.partial_card_number }} <span class="Circle_Separator">•</span> {{ account.data.display_name }}</div>
+        <p>{{ account.data.card_network | titlecase }} <span class="Circle_Separator">•</span> {{ account.data.name_on_card }}</p>
+        <div class="Conseq_Block_TranDetails" *ngIf="totalTransactions">
+            <div>
+                <div class="Caption">Transactions</div>
+                <h2>{{ totalTransactions }}</h2>
+            </div>
+            <div>
+                <div class="Caption">Total Amount</div>
+                <h2>{{ totalAmount | number: '1.2-2' }} <sup>{{ account.data.currency | uppercase }}</sup></h2>
+            </div>
+        </div>
     </mat-card>
 </div>
 
 <div *ngIf="type == 'account' && account">
-    <mat-card>
-        <h2 (click)="goToDetails(account, type)">{{ account.data.display_name }}</h2>
-        <h4>{{ account.data.account_number?.number }} {{ account.data.account_number?.sort_code }} {{ account.data.account_number?.swift_bic }}</h4>
-        <h5>{{ account.data.account_type}} | {{ account.data.currency }}</h5>
-
-        <p *ngIf="account.data.update_timestamp">Last updated: {{ account.data.update_timestamp | date: 'mediumDate'}}</p>
+    <mat-card class="Conseq_Block">
+        <div class="Subhead" (click)="goToDetails(account, type)">
+            {{ account.data.account_number?.number }} <span class="Circle_Separator">•</span> {{ account.data.account_type}}
+        </div>
+        <p>{{ account.data.display_name | titlecase }}</p>
     </mat-card>
 </div>

@@ -1,5 +1,7 @@
 <div *ngIf="card$ | async as card">
-    <app-card [account]="card" [type]="card.account_type?.toLowerCase()"></app-card>
+    <div *ngIf="card && transactions.length">
+        <app-card [account]="card" [type]="card.account_type?.toLowerCase()" [totalTransactions]="transactions.length" [totalAmount]="totalAmount"></app-card>
+    </div>
 </div>
 
 <section>

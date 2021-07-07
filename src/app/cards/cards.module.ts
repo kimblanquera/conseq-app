@@ -5,6 +5,8 @@ import { CardsRoutingModule } from './cards-routing.module';
 import { CardsComponent } from './cards.component';
 
 import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+
 import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { TransactionsModule } from '../transactions/transactions.module';
@@ -24,7 +26,8 @@ import { ChartsModule } from '../charts/charts.module';
     MatCardModule,
     TransactionsModule,
     MatTabsModule,
-    ChartsModule
+    ChartsModule,
+    MatIconModule
   ],
   exports: [
     CardsComponent,

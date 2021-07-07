@@ -24,6 +24,7 @@ export class CardDetailsComponent implements OnInit {
   chartDataSubClass: ChartData[] = [];
   id: string | null = '';
   type: string | null = '';
+  totalAmount: number = 0;
   constructor(private chartService: ChartDataHelperService, private dataService: AccountDataService, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -59,6 +60,8 @@ export class CardDetailsComponent implements OnInit {
                 }
               }
             }
+
+            this.totalAmount = this.totalAmount + transaction.amount;
 
             return transaction
           });
