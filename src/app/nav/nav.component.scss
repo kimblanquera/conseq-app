@@ -1,0 +1,10 @@
+.Navigation {
+    background: var(--conseq-black-3);
+    line-height: normal;
+
+    &_Logo {
+        max-width: 172px;
+        height: auto;
+        padding: 1.3rem 3rem 1rem 3rem;
+    }
+}
