@@ -1,47 +1,29 @@
+<mat-paginator class="TransactionsPaginator" [length]="transactions.length" itemsPerPageLabel="Rows per page"
+              [pageSize]="10"
+              [pageSizeOptions]="[10, 25, 100]">
+</mat-paginator>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 TransactionsTable" multiTemplateDataRows matSort>
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
-      <td mat-cell *matCellDef="let element"> {{ element.currency }} {{element.amount | number:'1.2-2'}}</td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="merchant_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Merchant</th>
-      <td mat-cell *matCellDef="let element"> {{element.merchant_name}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="transaction_classification">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Classification </th>
-      <td mat-cell *matCellDef="let element"> {{element.transaction_classification?.join(', ')}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="sub_classification">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> SubClassification </th>
-      <td mat-cell *matCellDef="let element"> {{element.sub_classification?.join(', ')}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="expandedDetail">
-        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
-          <div class="TransactionsTable_Details"
-               [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-            <div class="example-element-description">
-                <h5>{{ element.timestamp }}</h5>
-                <h6>{{ element.transaction_type }}</h6>
-                <p>{{ element.description }}</p>
-            </div>
+  <ng-container matColumnDef="data">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+    <td mat-cell *matCellDef="let element">
+      <div class="TransactionDetails">
+        <div class="TransactionDetails_Content">
+          <p class="large">{{ element.merchant_name ?  element.merchant_name : 'Merchant'}}</p>
+          <div class="Caption">{{ element.timestamp | date: 'dd MMM' }} <span class="Circle_Separator">•</span> {{ element.transaction_classification.join(', ') }}</div>
+        </div>
+        <div class="TransactionDetails_Content">
+          <p class="large bold">
+            XX.XX kCO2e
+          </p>
+          <div class="Caption">
+            {{ element.currency }} {{ element.amount | number: '1.2-2' }}
           </div>
-        </td>
-      </ng-container>
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
-      class="TransactionsTable_Row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
+        </div>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns" class="TransactionsTable_HeaderRow"></tr>
+  <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+      class="TransactionsTable_Row">
   </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="TransactionsTable_DetailsRow"></tr>
   </table>

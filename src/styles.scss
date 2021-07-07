@@ -33,6 +33,7 @@
     --body-font-color: white;
     --header-font: 'Volte Semibold';
     --h2-size: 3rem;
+    --p-large-size: 1.125rem;
 }
 
 html, body { height: 100%; }
@@ -76,5 +77,15 @@ sup {
 .Caption {
     font-family: var(--body-font);
     font-size: 0.875rem;
+    font-weight: 400;
+}
+
+p {
+    &.large {
+        font-size: var(--p-large-size);
+    }
+}
+
+.bold {
     font-weight: 700;
 }

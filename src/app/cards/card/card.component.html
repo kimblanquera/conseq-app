@@ -4,11 +4,11 @@
         <p>{{ account.data.card_network | titlecase }} <span class="Circle_Separator">•</span> {{ account.data.name_on_card }}</p>
         <div class="Conseq_Block_TranDetails" *ngIf="totalTransactions">
             <div>
-                <div class="Caption">Transactions</div>
+                <div class="Caption bold">Transactions</div>
                 <h2>{{ totalTransactions }}</h2>
             </div>
             <div>
-                <div class="Caption">Total Amount</div>
+                <div class="Caption bold">Total Amount</div>
                 <h2>{{ totalAmount | number: '1.2-2' }} <sup>{{ account.data.currency | uppercase }}</sup></h2>
             </div>
         </div>

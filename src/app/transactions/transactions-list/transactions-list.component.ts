@@ -21,7 +21,7 @@ export class TransactionsListComponent implements OnInit {
   @Input() transactions: ITransaction[] = [];
   @ViewChild(MatSort) sort: MatSort = new MatSort();
 
-  displayedColumns: string[] = ['amount', 'merchant_name', 'transaction_classification', 'sub_classification'];
+  displayedColumns: string[] = ['data']
   expandedElement: ITransaction | null = null;
   dataSource: MatTableDataSource<ITransaction> = new MatTableDataSource();
 

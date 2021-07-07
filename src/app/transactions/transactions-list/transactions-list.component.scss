@@ -1,8 +1,13 @@
 .TransactionsTable {
     width: 100%;
+    background: var(--conseq-black-3);
     &_Details {
         overflow: hidden;
         display: flex;
+    }
+
+    &_HeaderRow {
+        display: none;
     }
 
     &_Row {
@@ -11,11 +16,45 @@
         }
         
         td {
-            border-bottom-width: 0;
+            padding: 0;
+            border-bottom: 1px solid var(--conseq-black);
         }
     }
 
-    &_DetailsRow {
-        height: 0 !important;   
+    .TransactionDetails {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: var(--conseq-white-2);
+        padding: 1.5rem 2rem;
+
+        &_Content {
+            flex: 1 1 50%;
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+}
+
+::ng-deep .TransactionsPaginator {
+    background: var(--conseq-black-3);
+    text-align: left;
+    color: var(--conseq-white-2) !important;
+    font-family: var(--body-font) !important;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--conseq-black);
+
+    .mat-select-value {
+        color: var(--conseq-white-2) !important;
+    }
+
+    .mat-paginator-container {
+        justify-content: flex-start;
+        padding: 1rem 2rem;
+    }
+
+    .mat-paginator-page-size-label {
+        margin-left: 0;
     }
 }

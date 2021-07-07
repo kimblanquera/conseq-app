@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TransactionsListComponent } from './transactions-list/transactions-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 
@@ -13,7 +15,8 @@ import { MatSortModule } from '@angular/material/sort';
   imports: [
     CommonModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   exports: [
     TransactionsListComponent
