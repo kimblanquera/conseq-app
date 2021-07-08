@@ -12,13 +12,18 @@ import { CardDetailsComponent } from './card-details/card-details.component';
 import { TransactionsModule } from '../transactions/transactions.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ChartsModule } from '../charts/charts.module';
+import { CardSliderComponent } from './card-slider/card-slider.component';
+
+import { DragScrollModule } from 'ngx-drag-scroll';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     CardsComponent,
     CardComponent,
-    CardDetailsComponent
+    CardDetailsComponent,
+    CardSliderComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +32,9 @@ import { ChartsModule } from '../charts/charts.module';
     TransactionsModule,
     MatTabsModule,
     ChartsModule,
-    MatIconModule
+    MatIconModule,
+    DragScrollModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CardsComponent,

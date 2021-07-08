@@ -1,41 +1,33 @@
-<div *ngIf="card$ | async as card">
-    <div *ngIf="card && transactions.length">
-        <app-card [account]="card" [type]="card.account_type?.toLowerCase()" [totalTransactions]="transactions.length" [totalAmount]="totalAmount"></app-card>
-    </div>
+<div *ngIf="allData$ | async as allData; else showLoading">
+    <app-card-slider *ngIf="transactions.length > -1" [cards]="allData.data.accounts" [selectedCardId]="id" [totalAmount]="totalAmount" [totalTransactions]="transactions.length"></app-card-slider>
 </div>
 
-<section>
-    <mat-tab-group>
-        <mat-tab label="Transactions">
-            <h1>Transactions</h1>
-            <app-transactions-list *ngIf="transactions.length; else showNoTransactions" [transactions]="transactions"></app-transactions-list>
-            <ng-template #showNoTransactions>
-                <p>No transactions found.</p>
-            </ng-template>
-        </mat-tab>
-        <mat-tab label="Visualise">
-            <h1>Charts</h1>
-            <mat-card>
-                <mat-card-title>Transactions by merchant</mat-card-title>
-                <mat-card-content>
-                    <app-pie-chart [results]="chartDataMerchant"></app-pie-chart>
-                </mat-card-content>
-            </mat-card>
+<ng-template #showLoading>
+    <div class="Spinner_Container">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
 
-            <mat-card>
-                <mat-card-title>Transactions by classification</mat-card-title>
-                <mat-card-content>
-                    <app-pie-chart [results]="chartDataMainClass"></app-pie-chart>
-                </mat-card-content>
-            </mat-card>
+<section class="Details_Container">
+    <div class="Transactions">
+        <app-transactions-list *ngIf="transactions.length; else showNoTransactions" [transactions]="transactions"></app-transactions-list>
+        <ng-template #showNoTransactions>
+            <p>No transactions found.</p>
+        </ng-template>
+    </div>
+    <div class="Charts">
+        <mat-card>
+            <mat-card-title>Transactions by merchant</mat-card-title>
+            <mat-card-content>
+                <app-pie-chart [results]="chartDataMerchant" class="Pie_Chart"></app-pie-chart>
+            </mat-card-content>
+        </mat-card>
 
-            <mat-card>
-                <mat-card-title>Transactions by Subclassification</mat-card-title>
-                <mat-card-content>
-                    <app-pie-chart [results]="chartDataSubClass"></app-pie-chart>
-                </mat-card-content>
-            </mat-card>
-            
-        </mat-tab>
-      </mat-tab-group>
+        <mat-card>
+            <mat-card-title>Transactions by classification</mat-card-title>
+            <mat-card-content>
+                <app-pie-chart [results]="chartDataMainClass" class="Pie_Chart"></app-pie-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </section>

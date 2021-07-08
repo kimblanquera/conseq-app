@@ -1,0 +1,12 @@
+<div *ngIf="cards && cards.length" class="Slider">
+    <drag-scroll class="CardSlider_Container" #slider [drag-disabled]="false" [snap-offset]="-160">
+        <div class="Card_Wrapper" *ngFor="let card of cards">
+            <app-card drag-scroll-item [account]="card" [type]="card.account_type?.toLowerCase()" [totalTransactions]="totalTransactions" [totalAmount]="totalAmount"></app-card>
+        </div>
+    </drag-scroll>
+    
+    <div class="Slider_Overlay">
+        <div class="Overlay_Left"><div (click)="moveLeft()"><mat-icon>chevron_left</mat-icon></div></div>
+        <div class="Overlay_Right"><div (click)="moveRight()"><mat-icon>chevron_right</mat-icon></div></div>
+    </div>
+</div>

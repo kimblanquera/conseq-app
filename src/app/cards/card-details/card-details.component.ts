@@ -5,7 +5,7 @@ import { map, pluck } from 'rxjs/operators';
 import { MockCardTransactions, MockSingleCard } from 'src/app/mock/card.mock';
 import { CardAPIResult, ICard } from 'src/app/models/card';
 import { ChartData } from 'src/app/models/chart-data';
-import { HasSubClassification, IAccountData, ITransaction, ITransactionData, ITransactionResult, TransactionAPIResult, TransactionClassification } from 'src/app/models/shared';
+import { HasSubClassification, IAccountData, ITransaction, ITransactionData, ITransactionResult, TransactionAPIResult, TransactionClassification, IAccount } from 'src/app/models/shared';
 import { AccountDataService } from 'src/app/services/account-data.service';
 import { ChartDataHelperService } from 'src/app/services/chart-data-helper.service';
 
@@ -17,6 +17,7 @@ import { ChartDataHelperService } from 'src/app/services/chart-data-helper.servi
 export class CardDetailsComponent implements OnInit {
 
   card$: Observable<IAccountData | null> = new Observable<IAccountData | null>();
+  allData$: Observable<IAccount | null> = new Observable<IAccount | null>();
   transactions$: Observable<ITransactionData[]> = new Observable<ITransactionData[]>();
   transactions: ITransaction[] = [];
   chartDataMerchant: ChartData[] = [];
@@ -38,7 +39,6 @@ export class CardDetailsComponent implements OnInit {
         this.type = "account";
       }
       if(this.id?.length) {
-        this.card$ = this.dataService.getAccountById(this.id, this.type);
         this.dataService.getAccountData(this.id).subscribe((result: ITransactionResult) => {
           this.transactions = result.data.transactions.map((value: ITransactionData) => {
             const transaction: ITransaction = value.data;
@@ -71,6 +71,8 @@ export class CardDetailsComponent implements OnInit {
           this.chartDataSubClass = this.chartService.extractDataBySubClassification(this.transactions);
         })
       }
+
+      this.allData$ = this.dataService.getData();
     })
   }
 

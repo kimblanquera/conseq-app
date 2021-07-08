@@ -1,6 +1,7 @@
 .TransactionsTable {
     width: 100%;
     background: var(--conseq-black-3);
+    box-shadow: none;
     &_Details {
         overflow: hidden;
         display: flex;
