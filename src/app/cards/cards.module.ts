@@ -10,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { CardComponent } from './card/card.component';
 import { CardDetailsComponent } from './card-details/card-details.component';
 import { TransactionsModule } from '../transactions/transactions.module';
-import { MatTabsModule } from '@angular/material/tabs';
 import { ChartsModule } from '../charts/charts.module';
 import { CardSliderComponent } from './card-slider/card-slider.component';
 
@@ -30,7 +29,6 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CardsRoutingModule,
     MatCardModule,
     TransactionsModule,
-    MatTabsModule,
     ChartsModule,
     MatIconModule,
     DragScrollModule,
